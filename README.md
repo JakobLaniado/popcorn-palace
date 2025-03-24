@@ -1,6 +1,112 @@
-# 🎬 Popcorn Palace Movie Ticket Booking System
+# Popcorn Palace - Movie Ticket Booking System
 
-A modern, RESTful API for managing movie tickets, showtimes, and bookings built with NestJS and TypeScript.
+A modern movie ticket booking system built with NestJS and TypeScript, featuring a robust API and PostgreSQL database integration.
+
+## Features
+
+- RESTful API endpoints for movies, showtimes, and ticket management
+- PostgreSQL database with TypeORM integration
+- Docker containerization for easy deployment
+- Comprehensive test coverage
+- Swagger API documentation
+
+## Tech Stack
+
+- **Backend Framework**: NestJS
+- **Language**: TypeScript
+- **Database**: PostgreSQL
+- **ORM**: TypeORM
+- **Containerization**: Docker
+- **Testing**: Jest
+- **API Documentation**: Swagger
+
+## Prerequisites
+
+- Node.js (v18 or higher)
+- Docker and Docker Compose
+- PostgreSQL (if running locally)
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/JakobLaniado/popcorn-palace.git
+cd popcorn-palace
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
+
+4. Start the application:
+```bash
+# Using Docker
+docker-compose up -d
+
+# Or locally
+npm run start:dev
+```
+
+## API Documentation
+
+Once the application is running, you can access the Swagger API documentation at:
+```
+http://localhost:3000/api
+```
+
+## Testing
+
+Run the test suite:
+```bash
+# Unit tests
+npm run test
+
+# e2e tests
+npm run test:e2e
+
+# Test coverage
+npm run test:cov
+```
+
+## Docker Commands
+
+```bash
+# Build and start containers
+docker-compose up -d --build
+
+# View logs
+docker-compose logs -f
+
+# Stop containers
+docker-compose down
+
+# Rebuild containers
+docker-compose up -d --build
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- NestJS team for the amazing framework
+- TypeORM team for the excellent ORM
+- All contributors who help improve this project
 
 ## 🚀 Features
 
@@ -19,15 +125,6 @@ A modern, RESTful API for managing movie tickets, showtimes, and bookings built 
   - Track customer information and seat assignments
   - Validate seat availability
 
-## 🛠️ Tech Stack
-
-- **Framework**: NestJS
-- **Language**: TypeScript
-- **Database**: PostgreSQL
-- **ORM**: TypeORM
-- **Validation**: class-validator
-- **Containerization**: Docker & Docker Compose
-
 ## 🏗️ Project Structure
 
 ```
@@ -38,50 +135,6 @@ src/
 ├── dto/           # Data Transfer Objects
 ├── config/        # Configuration files
 └── main.ts        # Application entry point
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v18 or higher)
-- Docker and Docker Compose
-- PostgreSQL (if running locally)
-
-### Running with Docker
-
-1. Clone the repository:
-```bash
-git clone <your-repo-url>
-cd popcorn_palace_typescript
-```
-
-2. Start the application:
-```bash
-docker-compose up -d
-```
-
-The application will be available at `http://localhost:3000`
-
-### Running Locally
-
-1. Install dependencies:
-```bash
-npm install
-```
-
-2. Set up environment variables:
-```bash
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=postgres
-DB_PASSWORD=postgres
-DB_DATABASE=popcorn_palace
-```
-
-3. Start the application:
-```bash
-npm run start:dev
 ```
 
 ## 📝 API Endpoints
@@ -108,16 +161,4 @@ npm run start:dev
 - `GET /tickets/:id` - Get a specific ticket
 - `POST /tickets` - Create a new ticket
 - `DELETE /tickets/:id` - Delete a ticket
-
-## 🧪 Testing
-
-Run the test suite:
-```bash
-# Unit tests
-npm run test
-```
-
-## 📚 Documentation
-
-The API documentation is available at `http://localhost:3000/api` when running the application.
 
