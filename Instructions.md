@@ -1,20 +1,51 @@
 # Popcorn Palace - Movie Ticket Booking System
 
-This is a RESTful API for a movie ticket booking system built with NestJS, TypeScript, and PostgreSQL.
+## Project Overview
 
-## Prerequisites
+This project implements a movie ticket booking system using NestJS and TypeScript. The system allows users to manage movies, showtimes, and ticket bookings through a RESTful API.
 
-Before you begin, ensure you have the following installed:
-- Node.js (v16 or higher)
-- npm (v7 or higher)
-- Docker and Docker Compose
+## Repository
 
-## Project Setup
+The project is hosted on GitHub at: https://github.com/JakobLaniado/popcorn-palace
+
+## Features
+
+- Movie management (CRUD operations)
+- Showtime scheduling
+- Ticket booking system
+- Seat availability validation
+- PostgreSQL database integration
+- Docker containerization
+- Swagger API documentation
+
+## API Endpoints
+
+### Movies
+- `GET /movies` - Get all movies
+- `GET /movies/:id` - Get a specific movie
+- `POST /movies` - Create a new movie
+- `PUT /movies/:id` - Update a movie
+- `DELETE /movies/:id` - Delete a movie
+
+### Showtimes
+- `GET /showtimes` - Get all showtimes
+- `GET /showtimes/:id` - Get a specific showtime
+- `POST /showtimes` - Create a new showtime
+- `PUT /showtimes/:id` - Update a showtime
+- `DELETE /showtimes/:id` - Delete a showtime
+
+### Tickets
+- `GET /tickets` - Get all tickets
+- `GET /tickets/:id` - Get a specific ticket
+- `POST /tickets` - Create a new ticket
+- `DELETE /tickets/:id` - Delete a ticket
+
+## Getting Started
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd popcorn_palace_typescript
+git clone https://github.com/JakobLaniado/popcorn-palace.git
+cd popcorn-palace
 ```
 
 2. Install dependencies:
@@ -22,121 +53,58 @@ cd popcorn_palace_typescript
 npm install
 ```
 
-## Running the Application
-
-1. Make sure Docker and Docker Compose are installed and running on your system.
-
-2. Build and start the containers:
+3. Set up environment variables:
 ```bash
-# Build the containers
-docker-compose build
+cp .env.example .env
+```
 
-# Start the containers in detached mode
+4. Start the application:
+```bash
+# Using Docker
 docker-compose up -d
-```
 
-3. Check if containers are running:
-```bash
-docker-compose ps
-```
-
-4. Check container logs if needed:
-```bash
-# Check app logs
-docker-compose logs app
-
-# Check database logs
-docker-compose logs postgres
-```
-
-5. The API will be available at `http://localhost:3000`
-
-6. To stop the containers:
-```bash
-docker-compose down
-```
-
-7. To stop containers and remove volumes:
-```bash
-docker-compose down -v
+# Or locally
+npm run start:dev
 ```
 
 ## Testing
 
-The project includes comprehensive tests for all controllers and services. Here are the available test commands:
-
+Run the test suite:
 ```bash
-# Run all tests
+# Unit tests
 npm run test
+
+# e2e tests
+npm run test:e2e
+
+# Test coverage
+npm run test:cov
 ```
 
-### Running Specific Tests
+## Docker Commands
 
 ```bash
-# Run only movie controller tests
-npm run test -- src/controllers/movie.controller.spec.ts
+# Build and start containers
+docker-compose up -d --build
 
-# Run only showtime controller tests
-npm run test -- src/controllers/showtime.controller.spec.ts
+# View logs
+docker-compose logs -f
 
-# Run only ticket controller tests
-npm run test -- src/controllers/ticket.controller.spec.ts
+# Stop containers
+docker-compose down
+
+# Rebuild containers
+docker-compose up -d --build
 ```
 
-## API Endpoints
+## Contributing
 
-### Movies
-- `POST /movies` - Create a new movie
-- `GET /movies` - Get all movies
-- `GET /movies/:id` - Get a specific movie
-- `PUT /movies/:id` - Update a movie
-- `DELETE /movies/:id` - Delete a movie
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-### Showtimes
-- `POST /showtimes` - Create a new showtime
-- `GET /showtimes` - Get all showtimes
-- `GET /showtimes/:id` - Get a specific showtime
-- `PUT /showtimes/:id` - Update a showtime
-- `DELETE /showtimes/:id` - Delete a showtime
+## License
 
-### Tickets
-- `POST /tickets` - Create a new ticket
-- `GET /tickets` - Get all tickets
-- `GET /tickets/:id` - Get a specific ticket
-- `DELETE /tickets/:id` - Delete a ticket
-
-## Data Validation
-
-The API includes comprehensive validation for all inputs:
-
-### Movie Validation
-- Title: Required, unique
-- Duration: Positive number
-- Genre: Required
-- Rating: Decimal between 0 and 10
-- Release Year: Valid year
-
-### Showtime Validation
-- Movie ID: Must exist
-- Theater: Required, 1-50 characters
-- Start Time: Future date, format YYYY-MM-DDTHH:mm
-- End Time: After start time
-- Price: Decimal between 0.01 and 100
-
-### Ticket Validation
-- Showtime ID: Must exist
-- Seat Number: Integer between 1 and 100
-- Customer Name: Required, 2-50 characters
-- No double booking allowed
-- Cannot book tickets for past showtimes
-
-## Error Handling
-
-The API returns appropriate HTTP status codes and error messages:
-
-- `200 OK` - Successful request
-- `201 Created` - Resource created successfully
-- `400 Bad Request` - Invalid input data
-- `404 Not Found` - Resource not found
-- `409 Conflict` - Resource conflict (e.g., duplicate title)
-- `500 Internal Server Error` - Server error
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
